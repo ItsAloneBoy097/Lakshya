@@ -2,9 +2,9 @@
 @media (prefers-reduced-motion:no-preference){
 :root{--motion-ease:cubic-bezier(.22,1,.36,1)}
 header,nav{transition:background-color .45s var(--motion-ease),border-color .45s var(--motion-ease),box-shadow .45s var(--motion-ease)}
-nav a{position:relative;display:inline-block;transform:translateZ(0);backface-visibility:hidden;will-change:transform,color,opacity;transition:color .4s var(--motion-ease),opacity .4s ease,transform .5s var(--motion-ease)}
+nav a{position:relative;display:inline-block;transform:translateZ(0);backface-visibility:hidden;will-change:color,opacity;transition:color .35s var(--motion-ease),opacity .35s ease}nav a>span{display:none}header nav a::after{bottom:-8px;transform:translate3d(0,3px,0) scaleX(0);transition:transform .55s var(--motion-ease),opacity .3s ease}header nav a.text-white::after,header nav a:hover::after,header nav a:focus-visible::after{opacity:1;transform:translate3d(0,0,0) scaleX(1)}
 nav a::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:99px;background:currentColor;opacity:0;transform:translate3d(0,3px,0) scaleX(0);transform-origin:50% 50%;will-change:transform,opacity;transition:transform .5s var(--motion-ease),opacity .3s ease}
-nav a:hover::after,nav a:focus-visible::after{opacity:1;transform:translate3d(0,0,0) scaleX(1)}nav a:hover{transform:translate3d(0,-2px,0)}
+nav a:hover::after,nav a:focus-visible::after{opacity:1;transform:translate3d(0,0,0) scaleX(1)}nav a:hover{transform:translateZ(0)}
 nav a:focus-visible{outline:none}nav a:focus-visible::after{box-shadow:0 0 0 3px color-mix(in srgb,currentColor 16%,transparent)}
 nav button{transform:translateZ(0);backface-visibility:hidden;will-change:transform,opacity;transition:transform .5s var(--motion-ease),opacity .3s ease,background-color .4s ease}
 nav button:hover{transform:translate3d(0,-2px,0)}
