@@ -188,8 +188,8 @@ Option 2: Install and provide the "ws" package:
 const loadJsonFile=async(path)=>{const res=await fetch(`${path}?v=${Date.now()}`,{cache:"no-store"});if(!res.ok)throw new Error(`Failed to load ${path}`);return await res.json()};
 const shuffleRows=rows=>{const out=[...rows];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out};
 const resolveImg=img=>{if(!img)return "";if(/^(?:https?:|data:|blob:|\/)/i.test(img))return img;return `/${img.replace(/^\/+/,"")}`};
-async function Id(){const rows=await loadJsonFile("/json/portfolio.json");return Array.isArray(rows)?shuffleRows(rows).map(x=>({...x,img:resolveImg(x.img)})):[]}
-async function Dd(){const rows=await loadJsonFile("/json/clients.json");return Array.isArray(rows)?shuffleRows(rows).map(x=>({...x,img:resolveImg(x.img)})):[]}
+async function Id(){try{const rows=await loadJsonFile("/json/portfolio.json");if(Array.isArray(rows))return shuffleRows(rows).map(x=>({...x,img:resolveImg(x.img)}))}catch(e){console.warn("Portfolio JSON unavailable; using bundled fallback",e)}return shuffleRows(LOCAL_PORTFOLIO).map(({position,is_featured,...x})=>({...x,img:resolveImg(x.img)}))}
+async function Dd(){try{const rows=await loadJsonFile("/json/clients.json");if(Array.isArray(rows))return shuffleRows(rows).map(x=>({...x,img:resolveImg(x.img)}))}catch(e){console.warn("Clients JSON unavailable; using bundled fallback",e)}return shuffleRows(LOCAL_CLIENTS).map(({position,link,...x})=>({...x,img:resolveImg(x.img)}))}
 async function CC(){return true}
 async function PC(item){return {...item,id:item.id||crypto.randomUUID()}}
 async function NC(){return true}
