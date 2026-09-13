@@ -27,7 +27,3 @@ button:active,a:active,[role=button]:active{transform:scale(.98)}
 section[id]{scroll-margin-top:88px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-/* Contact CTAs stay visually locked; the global .group/active transforms make these buttons jump. */
-#contact a[href*="discord.com/users/"],#contact a[href*="discord.gg/"]{transform:none!important;transition:background-color .2s ease,border-color .2s ease,color .2s ease!important}
-#contact a[href*="discord.com/users/"]:active,#contact a[href*="discord.gg/"]:active{transform:none!important}
-#contact a[href*="discord.com/users/"] .group,#contact a[href*="discord.gg/"] .group{transform:none!important}
